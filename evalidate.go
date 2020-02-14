@@ -1,7 +1,6 @@
 package evalidate
 
 import (
-	"fmt"
 	"net"
 	"net/smtp"
 	"regexp"
