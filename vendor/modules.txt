@@ -1,0 +1,2 @@
+# github.com/kumarabd/appkit v0.0.0-20200210204234-9ff6b176c140
+github.com/kumarabd/appkit/errors

@@ -25,28 +25,29 @@ func ValidateFormat(email string) error {
 func ValidateHost(email string) error {
 	_, host := split(email)
 	mx, err := net.LookupMX(host)
+	fmt.Println(mx)
 	if err != nil {
-		return ErrUnresolvableHost
+		return ErrUnresolvableHost(err)
 	}
 
-	client, err := DialTimeout(fmt.Sprintf("%s:%d", mx[0].Host, 25), forceDisconnectAfter)
-	if err != nil {
-		return ErrTimeout
-	}
-	defer client.Close()
+	// client, err := DialTimeout(fmt.Sprintf("%s:%d", mx[0].Host, 25), forceDisconnectAfter)
+	// if err != nil {
+	// 	return ErrTimeout(err)
+	// }
+	// defer client.Close()
 
-	err = client.Hello("gmail.com")
-	if err != nil {
-		return ErrNotReachable
-	}
-	err = client.Mail("abishekkumar92@gmail.com")
-	if err != nil {
-		return ErrClientEmail
-	}
-	err = client.Rcpt(email)
-	if err != nil {
-		return ErrClientRct
-	}
+	// err = client.Hello("gmail.com")
+	// if err != nil {
+	// 	return ErrNotReachable(err)
+	// }
+	// err = client.Mail("abishekkumar92@gmail.com")
+	// if err != nil {
+	// 	return ErrClientEmail(err)
+	// }
+	// err = client.Rcpt(email)
+	// if err != nil {
+	// 	return ErrClientRct(err)
+	// }
 	return nil
 }
 

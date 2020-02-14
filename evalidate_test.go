@@ -3,7 +3,7 @@ package evalidate_test
 import (
 	"testing"
 
-	"github.com/kumarabd/evalidate"
+	evalidate "github.com/kumarabd/go-email-validation"
 )
 
 var (
