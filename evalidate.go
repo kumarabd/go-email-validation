@@ -28,11 +28,11 @@ func ValidateHost(email string) error {
 		return ErrUnresolvableHost(err)
 	}
 
-	// client, err := DialTimeout(fmt.Sprintf("%s:%d", mx[0].Host, 25), forceDisconnectAfter)
-	// if err != nil {
-	// 	return ErrTimeout(err)
-	// }
-	// defer client.Close()
+	client, err := DialTimeout(fmt.Sprintf("%s:%d", mx[0].Host, 25), forceDisconnectAfter)
+	if err != nil {
+		return ErrTimeout(err)
+	}
+	defer client.Close()
 
 	// err = client.Hello("gmail.com")
 	// if err != nil {
