@@ -1,7 +1,6 @@
 package evalidate
 
 import (
-	"fmt"
 	"net"
 	"net/smtp"
 	"regexp"
@@ -25,7 +24,6 @@ func ValidateFormat(email string) error {
 func ValidateHost(email string) error {
 	_, host := split(email)
 	mx, err := net.LookupMX(host)
-	fmt.Println(mx)
 	if err != nil {
 		return ErrUnresolvableHost(err)
 	}
